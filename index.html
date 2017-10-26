@@ -1,0 +1,37 @@
+<html lang='en'>
+<head>
+	<meta charset='cp1251'>
+	<title>PDF to HTML Slider</title>
+	<link rel='stylesheet' href='assets/slider.css' type='text/css'>
+	<script src='assets/jquery.min.js'></script>
+<style>body{background:#f2f2f2 no-repeat center top;margin:0}.flex-container{position: relative;margin: 0 auto; padding: 20px;}button.knopka, a.knopka {
+  color: #fff;text-decoration: none;user-select: none;background: rgb(212,75,56);padding: .7em 1.5em;outline: none;border:0;} .down{margin-top:70px;}</style>
+<meta name='robots' content='noindex,follow' />
+</head>
+<body>
+  <form name="uploader" enctype="multipart/form-data" onsubmit="return empty_form()" method="POST">
+<br/><br/>
+        <center>Выберите pdf файл: <br/><br/><input name="userfile" type="file" accept="application/pdf" /><br/><br/>
+        <button type="submit" name="submit" class="knopka">Конвертировать</button></center>
+    </form>
+    <script type="text/javascript">
+    $("form[name='uploader']").submit(function(e) {
+        var formData = new FormData($(this)[0]);
+
+        $.ajax({
+            url: 'convert.php',
+            type: "POST",
+            data: formData,
+            async: false,
+            success: function (msg) {
+                if(msg.length==10) {window.location= "view.php?sl="+msg;}else{alert(msg);}
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+        e.preventDefault();
+    });
+    </script>
+</body>
+</html>
