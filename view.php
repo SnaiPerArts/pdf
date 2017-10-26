@@ -56,8 +56,8 @@ padding: .7em 1.5em;outline: none;} .down{margin-top:70px;}</style>
             }
                 echo"</ul>
 </div></div>
-<div class='down'><center><a href='http://pdf.youedu.ru/index.html' class='knopka'>√лавна¤ страница</a>
-&nbsp;&nbsp;<a href='http://pdf.youedu.ru/download.php?sl=".$dir_img."' class='knopka'>—качать</a></center></div>
+<div class='down'><center><a href='http://pdf.youedu.ru/index.html' class='knopka'>Главная страница</a>
+&nbsp;&nbsp;<a href='http://pdf.youedu.ru/download.php?sl=".$dir_img."' class='knopka'>Скачать</a></center></div>
 <script>
 $(document).ready(function () {
 	$('.flexslider').flexslider({
