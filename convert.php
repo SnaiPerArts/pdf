@@ -1,13 +1,13 @@
 <?php
 header("Content-type: text/html; charset=windows-1251");
 if ($_FILES['userfile']['tmp_name'] == '') {
-    echo "Выберите файл!";
+    echo "Р’С‹Р±РµСЂРёС‚Рµ С„Р°Р№Р»!";
 } else {
     $uploaddir = $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR;
     $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
     move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
     if (substr(strrchr($_FILES['userfile']['name'], '.'), 1) != 'pdf') {
-        echo "Выберите PDF файл!";
+        echo "Р’С‹Р±РµСЂРёС‚Рµ PDF С„Р°Р№Р»!";
     } else {
         $pdf_file = $uploadfile;
         $im = new imagick($pdf_file);
@@ -22,8 +22,8 @@ if ($_FILES['userfile']['tmp_name'] == '') {
         $pages=$im->getiteratorindex() +1;
         $size = round(filesize($pdf_file)/1024/1024, 2);
         if ($size>50 or $pages>20 or $orient=='g') {
-            $out = "Файл не соответствует требованиям:\n Размер файла не более 50 Мб \n 
-			Страниц не более 20 \n Ориентация портретная(вертикальная)";
+            $out = "Р¤Р°Р№Р» РЅРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С‚СЂРµР±РѕРІР°РЅРёСЏРј:\n Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° РЅРµ Р±РѕР»РµРµ 50 РњР± \n 
+			РЎС‚СЂР°РЅРёС† РЅРµ Р±РѕР»РµРµ 20 \n РћСЂРёРµРЅС‚Р°С†РёСЏ РїРѕСЂС‚СЂРµС‚РЅР°СЏ(РІРµСЂС‚РёРєР°Р»СЊРЅР°СЏ)";
             echo $out;
         } else {
             date_default_timezone_set('Europe/Moscow');
